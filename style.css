@@ -79,7 +79,7 @@ h2, h3, p{
     background-color:var(--cor5);
     border: none;
     cursor: pointer;
-    transition: .3s
+    transition: .3s;
 }
 #adicionar:hover{
     filter: contrast(300%);
@@ -142,7 +142,6 @@ input[type="radio"]{
     width: 296px;
     padding: .8%;
     margin: .8%;
-    /* background: var(--cor1); */
     transition: .3s;
     box-shadow: 4px 4px 4px 2px rgb(0 0 0 / 50%);
 }
