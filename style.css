@@ -108,16 +108,16 @@ input[type="radio"]{
     background-color: white;
     padding: 4%;
 }
+.vermelho{
+    background-color: var(--cor3);
+    padding: 4%;
+}
 .amarelo{
     background-color: var(--cor1);
     padding: 4%;
 }
 .verde{
     background-color: var(--cor2);
-    padding: 4%;
-}
-.vermelho{
-    background-color: var(--cor3);
     padding: 4%;
 }
 .azul{
