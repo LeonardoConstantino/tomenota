@@ -18,9 +18,13 @@
     font-family: 'Roboto', sans-serif;
 }
 
-header > p, header > h1{
-padding: 0;
-margin: .4%;
+/* header{
+    background-color: var(--cor4)
+} */
+header, header > p, header > h1{
+    /* background-color: var(--cor4); */
+    padding: 0;
+    margin: .4%;
 }
 
 main{
@@ -125,7 +129,7 @@ input[type="radio"]{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    align-content: space-between;
+    align-content: flex-start;
     justify-content: space-around;
     align-items: center;
     width: 98%;
