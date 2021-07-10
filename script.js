@@ -1,5 +1,6 @@
 const CONTAINER = document.querySelector('.container')
 const FORM = document.querySelector('form').elements
+const AUDIO = document.querySelector('audio')
 
 function atualiza_local_Storage(nota) {
     localStorage.setItem(`${nota.id}`, JSON.stringify(nota))
@@ -18,6 +19,7 @@ FORM.adicionar.addEventListener('click', (e) => {
     e.preventDefault()
     if (FORM.titulo.value == '' ||FORM.comentario.value == '') return
     criar_nota(cria_obj_nota())
+    FORM.titulo.focus()
 })
 
 function exibe_notas() {
@@ -51,6 +53,7 @@ function cria_obj_nota() {
 function criar_nota(objNota) {
     let divNota = document.createElement("div")
     divNota.setAttribute('class', 'nota' )
+    divNota.classList.add('class', 'nota_hover' )
     divNota.innerHTML = `
     <h3>${objNota.titulo}</h3>
     <p>${objNota.comentario}</p>
@@ -66,7 +69,14 @@ function criar_nota(objNota) {
     btnApagaNota.addEventListener("click", (e) => {
         const CLASSE_DO_BOTAO_CLICADO = e.target.classList[1]
         localStorage.removeItem(`${CLASSE_DO_BOTAO_CLICADO}`)
-        divNota.remove()
+        divNota.classList.remove('nota_hover')
+        divNota.classList.add('animaApagar')
+        AUDIO.volume = 0.2
+        AUDIO.play()
+        setTimeout(() => {
+            divNota.remove()
+        }, 300);
+
     })
     divNota.appendChild(btnApagaNota)
 
