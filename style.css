@@ -7,7 +7,6 @@
     --cor3:#E05C36;
     --cor4:#41C6E0;
     --cor5:#2228F0;
-/* #58fa01, #FFE445, #E05C36, #41C6E0, #2228F0 */
 }
 
 *{
@@ -18,11 +17,22 @@
     font-family: 'Roboto', sans-serif;
 }
 
-/* header{
-    background-color: var(--cor4)
-} */
-header, header > p, header > h1{
-    /* background-color: var(--cor4); */
+header {
+    display: flex;
+    align-items: center;
+}
+
+.div_logo{
+    margin: 0 2%;
+}
+.div_logo2{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+header, header > div> p, header > div > h1{
+    width: 100%;
     padding: 0;
     margin: .4%;
 }
@@ -71,11 +81,7 @@ h2, h3, p{
 }
 
 #adicionar{
-    /* display: flex; */
-    /* align-items: center; */
-    /* float: right; */
     padding: 2%;
-    /* margin-top: 2%; */
     color: white;
     background-color:var(--cor5);
     border: none;
@@ -98,8 +104,6 @@ h2, h3, p{
 }
 .cores{
     display: flex;
-    /* align-items: center; */
-    /* justify-content: space-between; */
     width: 50%;
 }
 input[type="radio"]{
@@ -139,6 +143,7 @@ input[type="radio"]{
     background-color: white;
     box-shadow: 2px 2px 16px 0px rgb(0 0 0 / 50%);
 }
+
 .nota{
     width: 296px;
     padding: .8%;
@@ -149,16 +154,11 @@ input[type="radio"]{
 .nota_hover:hover{
     transform: scale(1.3);
 }
+
 .animaApagar{
-    /* transform: scale(.1); */
     transform:rotate(180deg) scale(.1);
     filter: opacity(.1);
 }
-
-/* .nota p, .nota h3{
-    display: flex;
-} */
-
 .apagar{
     float: right;
     padding: 2%;
