@@ -1,13 +1,14 @@
 const CONTAINER = document.querySelector('.container')
 const FORM = document.querySelector('form').elements
-const AUDIO = document.querySelector('audio')
+const AUDIO = document.querySelectorAll('audio')
 
 function atualiza_local_Storage(nota) {
     localStorage.setItem(`${nota.id}`, JSON.stringify(nota))
 }
 
 function gerar_id_aleatorio() { 
-    return Math.floor(Math.random() * 50000)
+    const d = new Date()
+    return d.getTime()
 }
 
 function reseta_inputs() {
@@ -18,6 +19,8 @@ function reseta_inputs() {
 FORM.adicionar.addEventListener('click', (e) => {
     e.preventDefault()
     if (FORM.titulo.value == '' ||FORM.comentario.value == '') return
+    AUDIO[1].volume = 0.2
+    AUDIO[1].play()
     criar_nota(cria_obj_nota())
     FORM.titulo.focus()
 })
@@ -71,8 +74,8 @@ function criar_nota(objNota) {
         localStorage.removeItem(`${CLASSE_DO_BOTAO_CLICADO}`)
         divNota.classList.remove('nota_hover')
         divNota.classList.add('animaApagar')
-        AUDIO.volume = 0.2
-        AUDIO.play()
+        AUDIO[0].volume = 0.2
+        AUDIO[0].play()
         setTimeout(() => {
             divNota.remove()
         }, 300);
