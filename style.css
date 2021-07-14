@@ -173,6 +173,7 @@ label{
     display: flex;
     width: 10%;
     padding: 1%;
+    transition: .1s;
     border: solid 1px #cecece;
 }
 
