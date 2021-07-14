@@ -27,12 +27,13 @@ FORM.adicionar.addEventListener('click', (e) => {
 
 function exibe_notas() {
     CONTAINER.innerHTML = ''
+    let listaNotas = []
     for (let i = 0; i < localStorage.length; i++) {
-        criar_nota(
-            JSON.parse(
-                localStorage.getItem(Object.keys(localStorage)[i])
-            )
-        )
+        listaNotas.push(Object.keys(localStorage)[i])
+    }
+    listaNotas.sort()
+    for (let i = 0; i < listaNotas.length; i++) {
+        criar_nota(JSON.parse(localStorage.getItem(listaNotas[i])))
     }
 }
 
