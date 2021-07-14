@@ -1,6 +1,38 @@
 const CONTAINER = document.querySelector('.container')
+const INPUT_PESQUISA = document.querySelector('#pes_conteudo')
 const FORM = document.querySelector('form').elements
 const AUDIO = document.querySelectorAll('audio')
+
+// INPUT_PESQUISA.addEventListener('input', () => {
+//     exibe_notas()
+//     let notas = document.querySelectorAll('.nota')
+//     for (let i = 0; i < notas.length; i++) {
+//         if (notas[i].children[0].innerText != INPUT_PESQUISA.value) {
+//             notas[i].remove()
+//         }
+//     }
+//     if (!INPUT_PESQUISA.value) {exibe_notas()}
+//     // document.querySelectorAll('.nota')[0].children[0].innerText
+// })
+
+function pesquisa_notas() {
+    let notas = document.querySelectorAll('.nota')
+    for (let i = 0; i < notas.length; i++) {
+        notas[i].remove()
+    }
+    for (let i = 0; i < localStorage.length; i++) {
+        nota = JSON.parse(localStorage.getItem(Object.keys(localStorage)[i]))
+        if (nota.titulo == INPUT_PESQUISA.value) {
+            criar_nota(nota)
+        }
+    }
+
+    if (!INPUT_PESQUISA.value) {exibe_notas()}
+}
+
+INPUT_PESQUISA.addEventListener('input', () => {
+    pesquisa_notas()
+})
 
 function atualiza_local_Storage(nota) {
     localStorage.setItem(`${nota.id}`, JSON.stringify(nota))
