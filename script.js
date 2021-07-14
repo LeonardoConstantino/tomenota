@@ -25,15 +25,44 @@ FORM.adicionar.addEventListener('click', (e) => {
     FORM.titulo.focus()
 })
 
+// function exibe_notas() {
+//     CONTAINER.innerHTML = ''
+//     for (let i = 0; i < localStorage.length; i++) {
+//         criar_nota(
+//             JSON.parse(
+//                 localStorage.getItem(Object.keys(localStorage)[i])
+//             )
+//         )
+//     }
+// }
+
 function exibe_notas() {
-    CONTAINER.innerHTML = ''
+    let listaNotas = []
     for (let i = 0; i < localStorage.length; i++) {
-        criar_nota(
-            JSON.parse(
-                localStorage.getItem(Object.keys(localStorage)[i])
-            )
-        )
+        listaNotas.push(Object.keys(localStorage)[i])
     }
+    listaNotas.sort()
+    CONTAINER.innerHTML = ''
+    for (let i = 0; i < listaNotas.length; i++) {
+        criar_nota(JSON.parse(localStorage.getItem(listaNotas[i])))
+    }
+}
+
+function criar_notas_test(qtd) {
+    let cont = 1
+    let core = ['white', 'var(--cor1)', 'var(--cor2)', 'var(--cor3)', 'var(--cor4)']
+    let timer = setInterval(() => {
+        if (cont == qtd) {clearInterval(timer)}
+        let nota = {
+            id: gerar_id_aleatorio(),
+            titulo: cont,
+            comentario: cont,
+            cor: core[Math.floor(Math.random() * core.length)]
+        }
+        criar_nota(nota)
+        atualiza_local_Storage(nota)
+        ++cont
+    }, 100)
 }
 
 function cria_obj_nota() {
@@ -89,3 +118,26 @@ function criar_nota(objNota) {
 }
 
 exibe_notas()
+
+
+
+
+// function ordem (){
+//     let leo = []
+//     for (let i = 0; i < localStorage.length; i++) {
+//         leo.push(Object.keys(localStorage)[i])
+//     }
+//     leo.sort()
+//     CONTAINER.innerHTML = ''
+//     for (let i = 0; i < leo.length; i++) {
+//         criar_nota(JSON.parse(localStorage.getItem(leo[i])))
+//     }
+// }
+
+
+// let leo = document.querySelectorAll('.nota')
+// for (let i = 0; i < leo.length; i++){
+//     if(leo[i].style.backgroundColor !== "white"){
+//         leo[i].remove()
+//     }
+// }
