@@ -56,19 +56,21 @@ function cria_obj_nota() {
 function criar_nota(objNota) {
     let divNota = document.createElement("div")
     divNota.setAttribute('class', 'nota' )
-    divNota.classList.add('class', 'nota_hover' )
+    divNota.classList.add('nota_hover' )
+    divNota.style.backgroundColor = `${objNota.cor}`
     divNota.innerHTML = `
     <h3>${objNota.titulo}</h3>
     <p>${objNota.comentario}</p>
     `
     CONTAINER.appendChild(divNota)
-    divNota.style.backgroundColor = `${objNota.cor}`
 
     let btnApagaNota = document.createElement("input")
     btnApagaNota.setAttribute('type', 'button')
-    btnApagaNota.setAttribute('value', 'Apagar')
+    btnApagaNota.setAttribute('value', 'delete')
     btnApagaNota.setAttribute('class', 'apagar')
     btnApagaNota.classList.add(`${objNota.id}`)
+    btnApagaNota.classList.add('material-icons')
+
     btnApagaNota.addEventListener("click", (e) => {
         const CLASSE_DO_BOTAO_CLICADO = e.target.classList[1]
         localStorage.removeItem(`${CLASSE_DO_BOTAO_CLICADO}`)

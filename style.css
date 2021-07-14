@@ -81,18 +81,18 @@ h2, h3, p{
 }
 
 #adicionar{
-    padding: 2%;
-    color: white;
-    background-color:var(--cor5);
+    font-size: 36px;
+    color: black;
+    background-color:transparent;
     border: none;
     cursor: pointer;
     transition: .3s;
 }
 #adicionar:hover{
-    filter: contrast(300%);
+    transform: scale(1.3);
 }
 #adicionar:active{
-    filter: brightness(70%);
+    transform: scale(.5);
 }
 
 .confg{
@@ -160,19 +160,20 @@ input[type="radio"]{
     filter: opacity(.1);
 }
 .apagar{
+    font-size: 36px;
     float: right;
-    padding: 2%;
-    color: white;
-    background-color:var(--cor0);
+    color: black;
+    background-color:transparent;
+    background-size: contain;
     border: none;
     cursor: pointer;
     transition: .3s
 }
 .apagar:hover{
-    filter: contrast(300%);
+    transform: scale(1.3);
 }
 .apagar:active{
-    filter: brightness(70%);
+    transform: scale(.5);
 }
 
 
