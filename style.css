@@ -109,6 +109,10 @@ h2, h3, p{
 input[type="radio"]{
     cursor: pointer;
 }
+label{
+    display: none;
+}
+
 .branco{
     background-color: white;
     padding: 4%;
@@ -144,8 +148,60 @@ input[type="radio"]{
     box-shadow: 2px 2px 16px 0px rgb(0 0 0 / 50%);
 }
 
+.pesquisa{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2%;
+    width:100%;
+    /* height:32px; */
+    /* background-color:blue; */
+    overflow: hidden;
+}
+
+.conteiner_pes_cores{
+    display: flex;
+    align-items: center;
+    width: 350px;
+}
+
+
+.campo_pesquisa_cor{
+    display: flex;
+    width: 50%;
+    transition: .3s;
+}
+
+#pes_conteudo{
+    width: 100%;
+    padding: 1%;
+    font-style: italic;
+    font-size: 1.0rem;
+    transition: .1s;
+    border: none;
+    border: solid 1px #cecece;
+}
+
+#pesquisa{
+    font-size: 36px;
+    color: black;
+    background-color:transparent;
+    border: none;
+    cursor: pointer;
+    transition: .1s
+}
+#pesquisa:hover{
+    transform: scale(1.3);
+}
+#pesquisa:active{
+    transform: scale(.5);
+}
+
+
+
 .nota{
     width: 296px;
+    /* width: 100%; */
     padding: .8%;
     margin: .8%;
     transition: .3s;
@@ -164,7 +220,6 @@ input[type="radio"]{
     float: right;
     color: black;
     background-color:transparent;
-    background-size: contain;
     border: none;
     cursor: pointer;
     transition: .3s
