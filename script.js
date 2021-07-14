@@ -1,6 +1,37 @@
 const CONTAINER = document.querySelector('.container')
+const INPUT_PESQUISA = document.querySelector('#inputPesquisa')
+const ICONE_PESQUISA = document.querySelector('#search')
 const FORM = document.querySelector('form').elements
 const AUDIO = document.querySelectorAll('audio')
+
+ICONE_PESQUISA.addEventListener('click',() =>{
+    let divPes = document.querySelector('#pes_conteudo')
+    if (divPes.style.width == "100%") {
+        divPes.style.width="10%"
+        return
+    }
+    divPes.style.width="100%"
+    INPUT_PESQUISA.focus()
+})
+
+function pesquisa_notas() {
+    let notas = document.querySelectorAll('.nota')
+    for (let i = 0; i < notas.length; i++) {
+        notas[i].remove()
+    }
+    for (let i = 0; i < localStorage.length; i++) {
+        nota = JSON.parse(localStorage.getItem(Object.keys(localStorage)[i]))
+        if (nota.titulo == INPUT_PESQUISA.value) {
+            criar_nota(nota)
+        }
+    }
+
+    if (!INPUT_PESQUISA.value) {exibe_notas()}
+}
+
+INPUT_PESQUISA.addEventListener('input', () => {
+    pesquisa_notas()
+})
 
 function atualiza_local_Storage(nota) {
     localStorage.setItem(`${nota.id}`, JSON.stringify(nota))
@@ -26,7 +57,6 @@ FORM.adicionar.addEventListener('click', (e) => {
 })
 
 function exibe_notas() {
-    CONTAINER.innerHTML = ''
     let listaNotas = []
     for (let i = 0; i < localStorage.length; i++) {
         listaNotas.push(Object.keys(localStorage)[i])
@@ -35,6 +65,23 @@ function exibe_notas() {
     for (let i = 0; i < listaNotas.length; i++) {
         criar_nota(JSON.parse(localStorage.getItem(listaNotas[i])))
     }
+}
+
+function criar_notas_test(qtd) {
+    let cont = 1
+    let core = ['white', 'var(--cor1)', 'var(--cor2)', 'var(--cor3)', 'var(--cor4)']
+    let timer = setInterval(() => {
+        if (cont == qtd) {clearInterval(timer)}
+        let nota = {
+            id: gerar_id_aleatorio(),
+            titulo: cont,
+            comentario: cont,
+            cor: core[Math.floor(Math.random() * core.length)]
+        }
+        criar_nota(nota)
+        atualiza_local_Storage(nota)
+        ++cont
+    }, 50)
 }
 
 function cria_obj_nota() {
