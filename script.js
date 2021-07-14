@@ -1,19 +1,18 @@
 const CONTAINER = document.querySelector('.container')
-const INPUT_PESQUISA = document.querySelector('#pes_conteudo')
+const INPUT_PESQUISA = document.querySelector('#inputPesquisa')
+const ICONE_PESQUISA = document.querySelector('#search')
 const FORM = document.querySelector('form').elements
 const AUDIO = document.querySelectorAll('audio')
 
-// INPUT_PESQUISA.addEventListener('input', () => {
-//     exibe_notas()
-//     let notas = document.querySelectorAll('.nota')
-//     for (let i = 0; i < notas.length; i++) {
-//         if (notas[i].children[0].innerText != INPUT_PESQUISA.value) {
-//             notas[i].remove()
-//         }
-//     }
-//     if (!INPUT_PESQUISA.value) {exibe_notas()}
-//     // document.querySelectorAll('.nota')[0].children[0].innerText
-// })
+ICONE_PESQUISA.addEventListener('click',() =>{
+    let divPes = document.querySelector('#pes_conteudo')
+    if (divPes.style.width == "100%") {
+        divPes.style.width="10%"
+        return
+    }
+    divPes.style.width="100%"
+    INPUT_PESQUISA.focus()
+})
 
 function pesquisa_notas() {
     let notas = document.querySelectorAll('.nota')
@@ -57,24 +56,12 @@ FORM.adicionar.addEventListener('click', (e) => {
     FORM.titulo.focus()
 })
 
-// function exibe_notas() {
-//     CONTAINER.innerHTML = ''
-//     for (let i = 0; i < localStorage.length; i++) {
-//         criar_nota(
-//             JSON.parse(
-//                 localStorage.getItem(Object.keys(localStorage)[i])
-//             )
-//         )
-//     }
-// }
-
 function exibe_notas() {
     let listaNotas = []
     for (let i = 0; i < localStorage.length; i++) {
         listaNotas.push(Object.keys(localStorage)[i])
     }
     listaNotas.sort()
-    // CONTAINER.innerHTML = ''
     for (let i = 0; i < listaNotas.length; i++) {
         criar_nota(JSON.parse(localStorage.getItem(listaNotas[i])))
     }
@@ -150,26 +137,3 @@ function criar_nota(objNota) {
 }
 
 exibe_notas()
-
-
-
-
-// function ordem (){
-//     let leo = []
-//     for (let i = 0; i < localStorage.length; i++) {
-//         leo.push(Object.keys(localStorage)[i])
-//     }
-//     leo.sort()
-//     CONTAINER.innerHTML = ''
-//     for (let i = 0; i < leo.length; i++) {
-//         criar_nota(JSON.parse(localStorage.getItem(leo[i])))
-//     }
-// }
-
-
-// let leo = document.querySelectorAll('.nota')
-// for (let i = 0; i < leo.length; i++){
-//     if(leo[i].style.backgroundColor !== "white"){
-//         leo[i].remove()
-//     }
-// }
