@@ -42,7 +42,7 @@ function exibe_notas() {
         listaNotas.push(Object.keys(localStorage)[i])
     }
     listaNotas.sort()
-    CONTAINER.innerHTML = ''
+    // CONTAINER.innerHTML = ''
     for (let i = 0; i < listaNotas.length; i++) {
         criar_nota(JSON.parse(localStorage.getItem(listaNotas[i])))
     }
@@ -62,7 +62,7 @@ function criar_notas_test(qtd) {
         criar_nota(nota)
         atualiza_local_Storage(nota)
         ++cont
-    }, 100)
+    }, 50)
 }
 
 function cria_obj_nota() {
