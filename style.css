@@ -87,7 +87,7 @@ h2, h3, p{
     transition: .3s;
 }
 #adicionar:hover{
-    transform: scale(1.3);
+    transform: scale(1.2);
 }
 #adicionar:active{
     transform: scale(.5);
@@ -177,40 +177,6 @@ label{
     border: solid 1px #cecece;
 }
 
-/* #inputPesquisa{
-    padding: 2%;
-    font-style: italic;
-    font-size: 1.0rem;
-    transition: .1s;
-    border: none;
-    border: solid 1px #cecece;
-} */
-
-
-
-/* #search:hover{
-    transform: scale(1.3);
-}
-#search:active{
-    transform: scale(.5);
-} */
-
-/* #search{
-    padding-right: 1%;
-    font-size: 36px;
-    color: black;
-    background-color:transparent;
-    border: none;
-    cursor: pointer;
-    transition: .1s
-} */
-/* #pesquisa:hover{
-    transform: scale(1.3);
-}
-#pesquisa:active{
-    transform: scale(.5);
-} */
-
 .nota{
     width: 296px;
     /* width: 100%; */
@@ -237,7 +203,7 @@ label{
     transition: .3s
 }
 .apagar:hover{
-    transform: scale(1.3);
+    transform: scale(1.2);
 }
 .apagar:active{
     transform: scale(.5);

@@ -4,16 +4,6 @@ const ICONE_PESQUISA = document.querySelector('#search')
 const FORM = document.querySelector('form').elements
 const AUDIO = document.querySelectorAll('audio')
 
-// ICONE_PESQUISA.addEventListener('click',() =>{
-//     let divPes = document.querySelector('#pes_conteudo')
-//     if (divPes.style.width == "100%") {
-//         divPes.style.width="10%"
-//         return
-//     }
-//     divPes.style.width="100%"
-//     INPUT_PESQUISA.focus()
-// })
-
 function pesquisa_notas() {
     const PESQUISA = INPUT_PESQUISA.value
     let notas = document.querySelectorAll('.nota')
@@ -75,7 +65,7 @@ function criar_notas_test(qtd) {
         let nota = {
             id: gerar_id_momento_atual(),
             titulo: cont,
-            comentario: cont*Math.floor(Math.random() * core.length),
+            comentario: cont*Math.floor(Math.random() * 1+100),
             cor: core[Math.floor(Math.random() * core.length)]
         }
         criar_nota(nota)
