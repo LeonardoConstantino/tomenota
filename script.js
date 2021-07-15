@@ -4,29 +4,29 @@ const ICONE_PESQUISA = document.querySelector('#search')
 const FORM = document.querySelector('form').elements
 const AUDIO = document.querySelectorAll('audio')
 
-ICONE_PESQUISA.addEventListener('click',() =>{
-    let divPes = document.querySelector('#pes_conteudo')
-    if (divPes.style.width == "100%") {
-        divPes.style.width="10%"
-        return
-    }
-    divPes.style.width="100%"
-    INPUT_PESQUISA.focus()
-})
+// ICONE_PESQUISA.addEventListener('click',() =>{
+//     let divPes = document.querySelector('#pes_conteudo')
+//     if (divPes.style.width == "100%") {
+//         divPes.style.width="10%"
+//         return
+//     }
+//     divPes.style.width="100%"
+//     INPUT_PESQUISA.focus()
+// })
 
 function pesquisa_notas() {
+    const PESQUISA = INPUT_PESQUISA.value
     let notas = document.querySelectorAll('.nota')
     for (let i = 0; i < notas.length; i++) {
         notas[i].remove()
     }
+    if (!PESQUISA) {exibe_notas()}
     for (let i = 0; i < localStorage.length; i++) {
         nota = JSON.parse(localStorage.getItem(Object.keys(localStorage)[i]))
-        if (nota.titulo == INPUT_PESQUISA.value) {
+        if (nota.titulo == PESQUISA || nota.comentario == PESQUISA) {
             criar_nota(nota)
         }
     }
-
-    if (!INPUT_PESQUISA.value) {exibe_notas()}
 }
 
 INPUT_PESQUISA.addEventListener('input', () => {
@@ -37,7 +37,7 @@ function atualiza_local_Storage(nota) {
     localStorage.setItem(`${nota.id}`, JSON.stringify(nota))
 }
 
-function gerar_id_aleatorio() { 
+function gerar_id_momento_atual() { 
     const d = new Date()
     return d.getTime()
 }
@@ -73,9 +73,9 @@ function criar_notas_test(qtd) {
     let timer = setInterval(() => {
         if (cont == qtd) {clearInterval(timer)}
         let nota = {
-            id: gerar_id_aleatorio(),
+            id: gerar_id_momento_atual(),
             titulo: cont,
-            comentario: cont,
+            comentario: cont*Math.floor(Math.random() * core.length),
             cor: core[Math.floor(Math.random() * core.length)]
         }
         criar_nota(nota)
@@ -92,7 +92,7 @@ function cria_obj_nota() {
     if (FORM.cor.value == 'vermelho') {corEscolhida = 'var(--cor3)'}
     if (FORM.cor.value == 'azul') {corEscolhida = 'var(--cor4)'}
     let nota = {
-        id: gerar_id_aleatorio(),
+        id: gerar_id_momento_atual(),
         titulo: FORM.titulo.value,
         comentario: FORM.comentario.value,
         cor: corEscolhida
