@@ -76,6 +76,7 @@ h2, h3, p{
     border: none;
     border-bottom: 2px solid var(--cor5);
     border-left: 2px solid var(--cor5);
+    font-style: normal;
 }
 
 #adicionar{
@@ -146,7 +147,7 @@ label{
     box-shadow: 2px 2px 16px 0px rgb(0 0 0 / 50%);
 }
 
-.pesquisa{
+header.exibicao{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -155,26 +156,38 @@ label{
     overflow: hidden;
 }
 
-.conteiner_pes_cores{
+.pesquisa{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 350px;
+    width: 33%;
+    min-width: 250px;
 }
 
-
-.campo_pesquisa_cor{
+.modo_de_exibicao{
     display: flex;
-    width: 50%;
-    transition: .3s;
+    width: 33%;
+}
+.btn_exibicao{
+    font-size: 36px;
+    color: black;
+    background-color:transparent;
+    border: none;
+    cursor: pointer;
+    transition: .3s
+}
+.btn_exibicao:hover{
+    transform: scale(1.2);
+}
+.btn_exibicao:active{
+    transform: scale(.5);
 }
 
-#pes_conteudo{
+.voltar{
     display: flex;
-    width: 10%;
-    padding: 1%;
-    transition: .1s;
-    border: solid 1px #cecece;
+    align-items: center;
+    justify-content: center;
+    width: 33%;
 }
 
 .nota{

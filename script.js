@@ -1,6 +1,7 @@
 const CONTAINER = document.querySelector('.container')
 const INPUT_PESQUISA = document.querySelector('#inputPesquisa')
 const ICONE_PESQUISA = document.querySelector('#search')
+const BTN_MODO_DE_EXIBICAO = document.querySelector('.btn_exibicao')
 const FORM = document.querySelector('form').elements
 const AUDIO = document.querySelectorAll('audio')
 
@@ -90,8 +91,8 @@ function reseta_inputs() {
 }
 
 function pesquisa_notas() {
-    const PESQUISA = INPUT_PESQUISA.value
     const NOTAS = document.querySelectorAll('.nota')
+    const PESQUISA = INPUT_PESQUISA.value
     for (let i = 0; i < NOTAS.length; i++) {
         NOTAS[i].remove()
     }
@@ -106,6 +107,7 @@ function pesquisa_notas() {
 
 INPUT_PESQUISA.addEventListener('input', () => {
     pesquisa_notas()
+    if (BTN_MODO_DE_EXIBICAO.value == 'view_module') {muda_stilo_notas('100%')}
 })
 
 FORM.adicionar.addEventListener('click', (e) => {
@@ -114,6 +116,29 @@ FORM.adicionar.addEventListener('click', (e) => {
     tocar_audio(1)
     exibe_notas_na_tela(cria_obj_nota())
     FORM.titulo.focus()
+})
+
+function muda_stilo_notas(width, fontSize) {
+    const NOTAS = document.querySelectorAll('.nota')
+    for (let i = 0; i < NOTAS.length; i++) {
+        NOTAS[i].classList.toggle('nota_hover')
+        NOTAS[i].style.width = `${width}`
+        NOTAS[i].style.fontSize = `${fontSize}`
+    }
+}
+
+function muda_modo_de_exibicao() {
+    if (BTN_MODO_DE_EXIBICAO.value == 'view_list') {
+        BTN_MODO_DE_EXIBICAO.value = 'view_module'
+        muda_stilo_notas('100%', '1.5rem')
+        return
+    }
+    BTN_MODO_DE_EXIBICAO.value = 'view_list'
+    muda_stilo_notas('296px', '1.0rem')
+}
+
+BTN_MODO_DE_EXIBICAO.addEventListener('click', () => {
+    muda_modo_de_exibicao()
 })
 
 function criar_notas_test(qtd) {
